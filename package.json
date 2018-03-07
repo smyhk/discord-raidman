@@ -1,6 +1,6 @@
 {
   "name": "raid-bot",
-  "version": "0.1.0",
+  "version": "0.0.0",
   "description": "Discord Raid Manager Bot",
   "main": "bot.js",
   "scripts": {
@@ -8,23 +8,15 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+ssh://git@github.com/smyhk/discord-raidman.git"
+    "url": "git@github.com/smyhk/discord-raidman.git"
   },
   "keywords": [
     "discord",
     "raid",
-    "discord.ja",
+    "discord.js",
     "javascript",
     "commando"
   ],
   "author": "Steve K.",
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/smyhk/discord-raidman/issues"
-  },
-  "homepage": "https://github.com/smyhk/discord-raidman#readme",
-  "dependencies": {
-    "discord.js": "^11.3.2",
-    "discord.js-commando": "^0.9.0"
-  }
+  "license": "MIT"
 }
