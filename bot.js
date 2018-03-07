@@ -1,3 +1,4 @@
+const botSettings = require("./botsettings.json");
 const Commando = require("discord.js-commando");
 const bot = new Commando.Client({
     owner: "351094569309306891",
@@ -25,4 +26,4 @@ bot.on("ready", () => {
     bot.user.setActivity("Raiding")
 });
 
-bot.login("");
+bot.login(botSettings.token);
