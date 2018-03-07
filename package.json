@@ -1,0 +1,26 @@
+{
+  "name": "raid-bot",
+  "version": "0.0.0",
+  "description": "Discord Raid Manager Bot",
+  "main": "bot.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/smyhk/discord-raidman.git"
+  },
+  "keywords": [
+    "discord",
+    "raid",
+    "discord.ja",
+    "javascript",
+    "commando"
+  ],
+  "author": "Steve K.",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/smyhk/discord-raidman/issues"
+  },
+  "homepage": "https://github.com/smyhk/discord-raidman#readme"
+}
