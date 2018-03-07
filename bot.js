@@ -10,8 +10,8 @@ const path = require("path");
 bot.registry
     // Registers your custom command groups
     .registerGroups([
-        ['raid', 'Raid commands']
-        //['some', 'Some group'],
+        ['raid', 'Raid commands'],
+        ['social', 'Social commands']
         //['other', 'Some other group']
     ])
 
