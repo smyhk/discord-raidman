@@ -18,5 +18,9 @@
     "commando"
   ],
   "author": "Steve K.",
-  "license": "MIT"
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/smyhk/discord-raidman/issues"
+  },
+  "homepage": "https://github.com/smyhk/discord-raidman#readme"
 }
