@@ -27,7 +27,7 @@ module.exports = class RolecallCommand extends Commando.Command {
     async run(msg, args) {
         msg.delete();  // delete original message
         let raid = args.raid;
-        let fileName = args.raid + ".json"
+        let fileName = args.raid + ".json";
         
         let raidChan = msg.guild.channels.find(c => c.name === "raid-channel");
         if (msg.channel.id === raidChan.id) {
@@ -37,6 +37,7 @@ module.exports = class RolecallCommand extends Commando.Command {
                     let player = JSON.parse(player);
                     return msg.reply(player);
                 }
+                return msg.reply(`forming up for ${raid}! Time to log in.`);
             } else {
                 return msg.reply(`Error: ${fileName} does not exist.`);
             }
