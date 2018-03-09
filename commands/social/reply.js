@@ -5,7 +5,7 @@ module.exports = class ReplyCommand extends Commando.Command {
         super(bot, {
             name: "reply",
             aliases: ["hello"],
-            group: "raid",
+            group: "social",
             memberName: "reply",
             description: "Replies with a message.",
             examples: ["reply"]

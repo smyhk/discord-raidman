@@ -63,3 +63,5 @@ typings/
 botSettings.json
 
 nodemon.json
+
+project.cpp
