@@ -35,6 +35,7 @@ module.exports = class CloseRaidCommand extends Commando.Command {
                 if (err) return msg.reply(`Error ${fileName} does not exist.`);
                 return msg.reply(`Deleted ${fileName} successfully.`)
             });
+            bot.signUps = 0;  // reset signup counter
         } else {
             return msg.reply(`Please use this command in ${raidChan}`);
         }

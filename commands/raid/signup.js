@@ -32,6 +32,7 @@ module.exports = class SignupCommand extends Commando.Command {
 
     async run(msg, args) {
         msg.delete();  // delete original message
+        let maxSignups = 11;
         let raid = args.raid;
         let fileName = args.raid + ".json";
         let player = msg.member;
@@ -39,6 +40,11 @@ module.exports = class SignupCommand extends Commando.Command {
         
         let raidChan = msg.guild.channels.find(c => c.name === "raid-channel");
         if (msg.channel.id === raidChan.id) {
+            if (bot.signUps >= maxSignups) {
+                return msg.reply("Raid is full! Signed up as overflow.")
+            }
+
+            // ensure raid file exisits and make sure player only signs up once
             fs.readFile(`./${fileName}`, (err, data) => {
                 if (err) return msg.reply(`Raid for ${raid} does not exist.`);
                 
@@ -69,6 +75,7 @@ module.exports = class SignupCommand extends Commando.Command {
                     if (err) console.log(err);
                     return msg.reply(`has signed up as ${role}`);
                 });
+                bot.signUps++;
             }); 
         } else {
             return msg.reply(`Please use this command in ${raidChan}`);

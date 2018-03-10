@@ -6,6 +6,7 @@ const bot = new Commando.Client({
     disableEveryone: true
 });
 const path = require("path");
+bot.signUps = 0;  // signup counter
 
 bot.registry
     // Registers your custom command groups
