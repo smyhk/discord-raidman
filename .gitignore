@@ -65,3 +65,5 @@ botSettings.json
 nodemon.json
 
 project.cpp
+
+defaults.json
