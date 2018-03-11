@@ -1,6 +1,6 @@
 const Commando = require("discord.js-commando");
 const fs = require("fs");
-const bot = require("../../bot.js")
+//onst bot = require("../../bot.js")
 signUps = 0;
 
 module.exports = class SignupCommand extends Commando.Command {
@@ -61,21 +61,19 @@ module.exports = class SignupCommand extends Commando.Command {
                         let defaults = JSON.parse(data);
                         if (player in defaults) {
                             role = defaults[player]["role"];
-                            console.log("in default" + role)
                         }
                         else {
                             role = "Dps"; // default role if none specified or in defaults file
                         }
 
                         let raidList = require(`../../${fileName}`);
-                        console.log("after role check" + role);
                         raidList[msg.member] = role;
 
                         // write player and role to raid file
                         fs.writeFile(`./${fileName}`, JSON.stringify(raidList, null, 4), err => {
                             if (err) console.log(err);
                             return msg.reply(`has signed up as ${role}`);
-                });
+                        });
                     });
                 }
                 signUps++;
