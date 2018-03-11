@@ -1,4 +1,6 @@
 const Commando = require("discord.js-commando");
+const Discord = require("discord.js");
+const bot = new Discord.Client({disableEveryone: true});
 const fs = require("fs");
 
 module.exports = class RolecallCommand extends Commando.Command {
@@ -31,22 +33,17 @@ module.exports = class RolecallCommand extends Commando.Command {
         
         let raidChan = msg.guild.channels.find(c => c.name === "raid-channel");
         if (msg.channel.id === raidChan.id) {
-            if (fileName) {
-                let raiders = require(`./${fileMName}`);
-                for (raider of raiders) {
-                    let player = JSON.parse(player);
-                    return msg.reply(player);
+            fs.readFile(`./${fileName}`, (err, data) => {
+                if (err) return msg.reply(`Error: ${fileName} does not exist.`);
+
+                let players = JSON.parse(data);
+                for (var key in players) {
+                    if (players.hasOwnProperty(key)) {
+                        return msg.say(key);
+                    }
                 }
                 return msg.reply(`forming up for ${raid}! Time to log in.`);
-            } else {
-                return msg.reply(`Error: ${fileName} does not exist.`);
-            }
-            // fs.readFile(`./${fileName}`, (err, data) => {
-            //     if (err) return msg.reply(`Error: ${fileName} does not exist.`);
-
-            //     let players = JSON.parse(data);
-
-            // });
+            });
         } else {
             return msg.reply(`Please use this command in ${raidChan}`);
         }
