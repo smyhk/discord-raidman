@@ -77,7 +77,6 @@ module.exports = class SignupCommand extends Commando.Command {
                     });
                 }
                 signUps++;
-                console.log("signups: " + signUps);
             }); 
         } else {
             return msg.reply(`Please use this command in ${raidChan}`);
