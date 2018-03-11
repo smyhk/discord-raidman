@@ -45,17 +45,19 @@ module.exports = class SignupCommand extends Commando.Command {
                 return msg.reply("Raid is full! Signed up as overflow.")
             }
 
-            let raidList = require(`../../${fileName}`);
-
             // ensure raid file exisits and make sure player only signs up once
             fs.readFile(`./${fileName}`, (err, data) => {
                 if (err) return msg.reply(`Raid for ${raid} does not exist.`);
                 
                 let raiders = JSON.parse(data);
-                if (player in raiders) return msg.reply("Only one signup allowed per person. You have already signed up.")
+                if (player.user.username in raiders) return msg.reply("Only one signup allowed per person. You have already signed up.")
 
+                let raidList = require(`../../${fileName}`);
                 if (role) {
-                    raidList[msg.member] = role;
+                    raidList[msg.member.user.username] = {
+                        role: role,
+                        id: "<@" + msg.member.id + ">"
+                    };
                 } else {
                     fs.readFile("./defaults.json", (err, data) => {
                         if (err) console.log(err);
@@ -67,8 +69,10 @@ module.exports = class SignupCommand extends Commando.Command {
                         else {
                             role = "Dps"; // default role if none specified or in defaults file
                         }
-                        console.log(role);
-                        raidList[msg.member] = role;
+                        raidList[msg.member.user.username] = {
+                            role: role,
+                            id: "<@" + msg.member.id + ">"
+                        };
                     });
                 }
                 console.log(role);
