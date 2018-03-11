@@ -1,6 +1,5 @@
 const Commando = require("discord.js-commando");
 const fs = require("fs");
-//onst bot = require("../../bot.js")
 signUps = 0;
 
 module.exports = class SignupCommand extends Commando.Command {
@@ -42,9 +41,11 @@ module.exports = class SignupCommand extends Commando.Command {
         
         let raidChan = msg.guild.channels.find(c => c.name === "raid-channel");
         if (msg.channel.id === raidChan.id) {
-            if (bot.signUps >= maxSignups) {
+            if (signUps >= maxSignups) {
                 return msg.reply("Raid is full! Signed up as overflow.")
             }
+
+            let raidList = require(`../../${fileName}`);
 
             // ensure raid file exisits and make sure player only signs up once
             fs.readFile(`./${fileName}`, (err, data) => {
@@ -53,8 +54,9 @@ module.exports = class SignupCommand extends Commando.Command {
                 let raiders = JSON.parse(data);
                 if (player in raiders) return msg.reply("Only one signup allowed per person. You have already signed up.")
 
-                // check for default raid roles if none specified
-                if (role === "" || role === null) {
+                if (role) {
+                    raidList[msg.member] = role;
+                } else {
                     fs.readFile("./defaults.json", (err, data) => {
                         if (err) console.log(err);
 
@@ -65,19 +67,19 @@ module.exports = class SignupCommand extends Commando.Command {
                         else {
                             role = "Dps"; // default role if none specified or in defaults file
                         }
-
-                        let raidList = require(`../../${fileName}`);
+                        console.log(role);
                         raidList[msg.member] = role;
-
-                        // write player and role to raid file
-                        fs.writeFile(`./${fileName}`, JSON.stringify(raidList, null, 4), err => {
-                            if (err) console.log(err);
-                            return msg.reply(`has signed up as ${role}`);
-                        });
                     });
                 }
-                signUps++;
-            }); 
+                console.log(role);
+                
+                // write player and role to raid file
+                fs.writeFile(`./${fileName}`, JSON.stringify(raidList, null, 4), err => {
+                    if (err) console.log(err);
+                    return msg.reply(`has signed up as ${role}`);
+                });
+            });
+            signUps++;
         } else {
             return msg.reply(`Please use this command in ${raidChan}`);
         }
