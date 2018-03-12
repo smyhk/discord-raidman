@@ -48,7 +48,7 @@ module.exports = class SignupCommand extends Commando.Command {
 
             // ensure raid file exsists and make sure player only signs up once
             fs.readFile(`./${fileName}`, (err, data) => {
-                if (err) return msg.reply(`Raid for ${raid} does not exist.`);
+                if (err) return msg.say(`Raid for ${raid} does not exist.`);
                 
                 let raiders = JSON.parse(data);
                 if (player.user.username in raiders) return msg.reply("Only one signup allowed per person. You have already signed up.")
