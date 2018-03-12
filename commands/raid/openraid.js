@@ -48,7 +48,6 @@ module.exports = class OpenRaidCommand extends Commando.Command {
                     if (err.code === "EEXIST") {
                         return msg.reply(`File Name ${fileName} already exists, use another name or clear the raid.`)
                     }
-                    //throw err;
                 }
                 fs.write(fd, "{}", 0, (err) => {
                     if (err) console.log(err);
@@ -62,7 +61,7 @@ module.exports = class OpenRaidCommand extends Commando.Command {
             if (!message) {
                 return msg.reply(`Raid signups now open for ${raid}!"`);
             } else {
-                msg.reply(message);
+                return msg.reply(message);
             }
         } else {
             return msg.reply(`Please use this command in ${raidChan}`);
