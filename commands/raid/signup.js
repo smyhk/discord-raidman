@@ -64,7 +64,6 @@ module.exports = class SignupCommand extends Commando.Command {
                         else {
                             role = "Dps"; // default role if none specified or in defaults file
                         }
-                        console.log("after else" + role)
                         raidList[msg.member.user.username] = {
                             role: role,
                             id: "<@" + msg.member.id + ">"
@@ -86,10 +85,6 @@ module.exports = class SignupCommand extends Commando.Command {
                         return msg.reply(`has signed up as ${role}`);
                     });
                 }
-                
-                console.log("after null role " + role)
-                // write player and role to raid file
-                
             });
             signUps++;
         } else {
