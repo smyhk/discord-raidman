@@ -38,7 +38,6 @@ module.exports = class SignupCommand extends Commando.Command {
         let fileName = args.raid + ".json";
         let player = msg.member;
         let role = args.role;
-        let raidList = require(`../../${fileName}`);
         
         let raidChan = msg.guild.channels.find(c => c.name === "raid-channel");
         if (msg.channel.id === raidChan.id) {
@@ -54,6 +53,7 @@ module.exports = class SignupCommand extends Commando.Command {
                 if (player.user.username in raiders) return msg.reply("Only one signup allowed per person. You have already signed up.")
 
                 if (role === "" || role === null) {
+                    let raidList = require(`../../${fileName}`);
                     fs.readFile("./defaults.json", (err, data) => {
                         if (err) console.log(err);
     
