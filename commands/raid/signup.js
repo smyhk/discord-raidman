@@ -51,9 +51,8 @@ module.exports = class SignupCommand extends Commando.Command {
                 
                 let raiders = JSON.parse(data);
                 if (player.user.username in raiders) return msg.reply("Only one signup allowed per person. You have already signed up.")
-
+                let raidList = require(`../../${fileName}`);
                 if (role === "" || role === null) {
-                    let raidList = require(`../../${fileName}`);
                     fs.readFile("./defaults.json", (err, data) => {
                         if (err) console.log(err);
     
