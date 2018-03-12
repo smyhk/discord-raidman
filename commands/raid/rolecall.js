@@ -32,23 +32,16 @@ module.exports = class RolecallCommand extends Commando.Command {
         
         let raidChan = msg.guild.channels.find(c => c.name === "raid-channel");
         if (msg.channel.id === raidChan.id) {
-            // let raidList = require(`../../${fileName}`);
-            // for (let key in raidList) {
-            //     if (raidList.hasOwnProperty(key)) {
-            //         return msg.say(raidList[key]["id"]);
-            //     }
-            // }
             fs.readFile(`./${fileName}`, (err, data) => {
                 if (err) return msg.reply(`Error: ${fileName} does not exist.`);
 
                 let players = JSON.parse(data);
-                console.log(players);
                 for (var key in players) {
                     if (players.hasOwnProperty(key)) {
                         msg.say(players[key].id);
                     }
                 }
-                return msg.reply(`forming up for ${raid}! Time to log in.`);
+                return msg.say(`Forming up for ${raid}! Time to log in.`);
                 
             });
         } else {
