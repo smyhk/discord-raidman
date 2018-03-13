@@ -1,5 +1,5 @@
 const Commando = require("discord.js-commando");
-const Discord = require("discord.js");
+const RichEmbed = require("discord.js");
 const fs = require("fs");
 
 module.exports = class StatusCommand extends Commando.Command {
@@ -36,7 +36,9 @@ module.exports = class StatusCommand extends Commando.Command {
                 if (err) return msg.reply(`Error: ${fileName} does not exist.`);
 
                 let players = JSON.parse(data);
-                if (players === null) return msg.say(`No players signed up for ${raid}`);
+                if (Object.keys(players).length === 0)
+                    return msg.say(`No players signed up for ${raid}`);
+                
                 for (let key in players) {
                     if (players.hasOwnProperty(key)) {
                         msg.say(players[key].id);
