@@ -19,11 +19,6 @@ module.exports = class OpenRaidCommand extends Commando.Command {
                     key: "raid",
                     prompt: "You did not specify a file or raid name.",
                     type: "string",
-                    // validate: text => {
-                    //     let m = text.split(" ");
-                    //     if (m[1]) return "Name for text file / name of raid, one word only."
-                    //     else return true;
-                    // }
                 },
                 {
                     key: "message",
