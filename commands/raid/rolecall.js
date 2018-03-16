@@ -32,7 +32,7 @@ module.exports = class RolecallCommand extends Commando.Command {
         
         let raidChan = msg.guild.channels.find(c => c.name === "raid-channel");
         if (msg.channel.id === raidChan.id) {
-            fs.readFile(`./${fileName}`, (err, data) => {
+            fs.readFile(`./raids/${fileName}`, (err, data) => {
                 if (err) return msg.reply(`Error: ${fileName} does not exist.`);
 
                 let players = JSON.parse(data);

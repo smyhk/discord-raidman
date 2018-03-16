@@ -35,10 +35,10 @@ module.exports = class OpenRaidCommand extends Commando.Command {
         let raid = args.raid;
         let fileName = args.raid + ".json"
         let message = args.message;
-        
+
         let raidChan = msg.guild.channels.find(c => c.name === "raid-channel");
         if (msg.channel.id === raidChan.id) {
-            fs.open(`./${fileName}`, 'wx', (err, fd) => {
+            fs.open(`./raids/${fileName}`, 'wx', (err, fd) => {
                 if (err) {
                     if (err.code === "EEXIST") {
                         return msg.reply(`File Name ${fileName} already exists, use another name or clear the raid.`)

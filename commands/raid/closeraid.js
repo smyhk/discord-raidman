@@ -31,7 +31,7 @@ module.exports = class CloseRaidCommand extends Commando.Command {
 
         let raidChan = msg.guild.channels.find(c => c.name === "raid-channel");
         if (msg.channel.id === raidChan.id) {
-            fs.unlink(`./${fileName}`, (err) => {
+            fs.unlink(`./raids/${fileName}`, (err) => {
                 if (err) return msg.reply(`Error ${fileName} does not exist.`);
                 return msg.reply(`Deleted ${fileName} successfully.`)
             });

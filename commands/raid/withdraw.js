@@ -32,7 +32,7 @@ module.exports = class WithdrawCommand extends Commando.Command {
         
         let raidChan = msg.guild.channels.find(c => c.name === "raid-channel");
         if (msg.channel.id === raidChan.id) {
-            fs.readFile(`./${fileName}`, (err, data) => {
+            fs.readFile(`./raids/${fileName}`, (err, data) => {
                 if (err) return msg.reply(`${raid} raid does not exist, use list command to see available raids.`);
 
                 let players = JSON.parse(data);
@@ -40,10 +40,10 @@ module.exports = class WithdrawCommand extends Commando.Command {
                     return msg.reply("Player not found in signup list.");
                 }
 
-                let raidList = require(`../../${fileName}`);
+                let raidList = require(`../../raids/${fileName}`);
                 delete raidList[msg.member.user.username];
 
-                fs.writeFile(`./${fileName}`, JSON.stringify(raidList, null, 4), err => {
+                fs.writeFile(`./raids/${fileName}`, JSON.stringify(raidList, null, 4), err => {
                     if (err) console.log(err);
                     return msg.reply(`removed from ${raid} signups.`);
                 });

@@ -46,12 +46,12 @@ module.exports = class SignupCommand extends Commando.Command {
             }
 
             // ensure raid file exsists and make sure player only signs up once
-            fs.readFile(`./${fileName}`, (err, data) => {
+            fs.readFile(`./raids/${fileName}`, (err, data) => {
                 if (err) return msg.say(`Raid for ${raid} does not exist.`);
                 
                 let raiders = JSON.parse(data);
                 if (player.user.username in raiders) return msg.reply("Only one signup allowed per person. You have already signed up.")
-                let raidList = require(`../../${fileName}`);
+                let raidList = require(`../../raids/${fileName}`);
                 if (role === "" || role === null) {
                     fs.readFile("./defaults.json", (err, data) => {
                         if (err) console.log(err);
@@ -68,7 +68,7 @@ module.exports = class SignupCommand extends Commando.Command {
                             id: "<@" + msg.member.id + ">"
                         };
 
-                        fs.writeFile(`./${fileName}`, JSON.stringify(raidList, null, 4), err => {
+                        fs.writeFile(`./raids/${fileName}`, JSON.stringify(raidList, null, 4), err => {
                             if (err) console.log(err);
                             return msg.reply(`has signed up as ${role}`);
                         });
@@ -79,7 +79,7 @@ module.exports = class SignupCommand extends Commando.Command {
                         id: "<@" + msg.member.id + ">"
                     };
 
-                    fs.writeFile(`./${fileName}`, JSON.stringify(raidList, null, 4), err => {
+                    fs.writeFile(`./raids/${fileName}`, JSON.stringify(raidList, null, 4), err => {
                         if (err) console.log(err);
                         return msg.reply(`has signed up as ${role}`);
                     });
