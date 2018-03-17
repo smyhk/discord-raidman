@@ -20,7 +20,7 @@ $ node bot
 
 This bot can easily be deployed to a cloud servce like Heroku.
 ```
-$ echo "worker: node bot.js" >> Procfile
+$ echo "worker: node bot.js" > Procfile
 ```
 ```
 $ git add .
