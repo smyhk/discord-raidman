@@ -1,7 +1,7 @@
 const Commando = require("discord.js-commando");
 const fs = require("fs");
 
-module.exports = class RolecallCommand extends Commando.Command {
+module.exports = class RaidListCommand extends Commando.Command {
     constructor(bot) {
         super(bot, {
             name: "raidlist",
