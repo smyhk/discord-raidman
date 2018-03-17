@@ -11,7 +11,7 @@ These instructions will get you a copy of the project up and running on your loc
 Nodejs
 
 ```
-Give examples
+Go download Nodejs
 ```
 
 ### Installing
@@ -60,7 +60,7 @@ Add additional notes about how to deploy this on a live system
 
 * [Nodejs](https://nodejs.org/en/docs/) - The JavaScript runtime
 * [discord.js](https://discord.js.org/#/docs/main/stable/general/welcome) - Discord API wrapper
-* [discord.js-commando](https://rometools.github.io/rome/) - Command framework for discord.js
+* [discord.js-commando](https://discord.js.org/#/docs/commando/master/general/welcome) - Command framework for discord.js
 
 ## Contributing
 
@@ -72,7 +72,7 @@ We use [SemVer](http://semver.org/) for versioning. For the versions available, 
 
 ## Authors
 
-* **Steve Kedzie** - *smyhk* - [PurpleBooth](https://github.com/smyhk)
+* **Steve Kedzie** - *smyhk* - [SmyhkTech](https://github.com/smyhk)
 
 See also the list of [contributors](https://github.com/smyhk/discord-raidman/contributors) who participated in this project.
 
