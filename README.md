@@ -1,6 +1,6 @@
-# Project Title
+# Discord Raid Manager Bot
 
-Discord Raid Manager Bot
+Easily manage multiple raids with signups and default roles, i.e., tank, dps, or healer.
 
 ## Getting Started
 
@@ -8,23 +8,39 @@ These instructions will get you a copy of the project up and running on your loc
 
 ### Prerequisites
 
-Nodejs
-
-```
-Go download Nodejs
-```
+* Nodejs - You will need to install Nodejs.
+* Discord account - You will need to have a Discord account and own a server, or have an admin role for a server you do not own.
 
 ## Deployment
 
+Run from the root directory of the project:
 ```
-$node bot
+$ node bot
 ```
 
-This bot can easily be deployed to a cloud servce like Heroku. 
+This bot can easily be deployed to a cloud servce like Heroku.
+```
+$ echo "worker: node bot.js" >> Procfile
+```
+```
+$ git add .
+```
+```
+$ git commit -m "Add Heroku Procfile"
+```
+```
+$ heroku create
+```
+```
+$ git push heroku master
+```
+```
+$ heroku ps:scale worker=0
+```
 
 ## Built With
 
-* [Nodejs](https://nodejs.org/en/docs/) - The JavaScript runtime
+* [Nodejs](https://nodejs.org/en/docs/) - *The* JavaScript runtime
 * [discord.js](https://discord.js.org/#/docs/main/stable/general/welcome) - Discord API wrapper
 * [discord.js-commando](https://discord.js.org/#/docs/commando/master/general/welcome) - Command framework for discord.js
 
@@ -47,8 +63,4 @@ See also the list of [contributors](https://github.com/smyhk/discord-raidman/con
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details
 
 ## Acknowledgments
-
-* Hat tip to anyone who's code was used
-* Inspiration
-* etc
 
