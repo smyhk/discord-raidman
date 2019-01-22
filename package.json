@@ -24,7 +24,7 @@
   },
   "homepage": "https://github.com/smyhk/discord-raidman#readme",
   "dependencies": {
-    "discord.js": "^11.3.2",
+    "discord.js": "^11.4.2",
     "discord.js-commando": "^0.9.0"
   }
 }
